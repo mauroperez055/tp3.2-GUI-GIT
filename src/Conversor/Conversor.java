@@ -59,6 +59,11 @@ public class Conversor extends javax.swing.JFrame {
         jLabel2.setText("Ingrese la temperatura en grados celcius");
 
         txtBox.setBackground(new java.awt.Color(255, 255, 255));
+        txtBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBoxKeyTyped(evt);
+            }
+        });
 
         bgrMedida.add(rbtxF);
         rbtxF.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -137,7 +142,7 @@ public class Conversor extends javax.swing.JFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(5, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,29 +171,42 @@ public class Conversor extends javax.swing.JFrame {
 
     private void btnConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertActionPerformed
         // TODO add your handling code here:
-        
         if (txtBox.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe ingresar una temperatura", "ATENCION!", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
+        String texto = txtBox.getText();
+
         if (!rbtxF.isSelected() && !rbtxK.isSelected()) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un tipo", "ATENCION!", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        double celcius = Double.parseDouble(txtBox.getText());
-        
+
+        double celcius = Double.parseDouble(texto);
+
         if (rbtxF.isSelected()) {
-            double fahrenheit = celcius * 9/5 + 32;
-            System.out.println("grados en fahrenheit: " + fahrenheit + " F"); //para controlar
-            JOptionPane.showMessageDialog(this, "La temperatura en grados fahrenheit es: " + fahrenheit + " F.");
+            double fahrenheit = celcius * 9 / 5 + 32;
+            JOptionPane.showMessageDialog(this, "La temperatura en grados Fahrenheit es: " + fahrenheit + " F.");
         } else if (rbtxK.isSelected()) {
             double kelvin = celcius + 273.15;
-            System.out.println("grados en kelvin: " + kelvin + " K"); //para controlar
-            JOptionPane.showMessageDialog(this, "La temperatura en grados kelvin es: " + kelvin + " K.");
+            JOptionPane.showMessageDialog(this, "La temperatura en grados Kelvin es: " + kelvin + " K.");
         }
+        
     }//GEN-LAST:event_btnConvertActionPerformed
+
+    private void txtBoxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBoxKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+        }
+        
+        if (c == '.' && txtBox.getText().contains(".")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtBoxKeyTyped
 
     /**
      * @param args the command line arguments
