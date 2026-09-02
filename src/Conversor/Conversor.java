@@ -68,6 +68,7 @@ public class Conversor extends javax.swing.JFrame {
         rbtnKelvin.setText("Kelvin");
 
         btnConvertir.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnConvertir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Conversor/icons8-aprobar-y-actualizar-48.png"))); // NOI18N
         btnConvertir.setText("Convertir");
 
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
@@ -95,7 +96,7 @@ public class Conversor extends javax.swing.JFrame {
                 .addComponent(rbtnKelvin)
                 .addGap(96, 96, 96))
             .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                .addGap(119, 119, 119)
+                .addGap(86, 86, 86)
                 .addComponent(btnConvertir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -133,7 +134,7 @@ public class Conversor extends javax.swing.JFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -144,7 +145,9 @@ public class Conversor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
