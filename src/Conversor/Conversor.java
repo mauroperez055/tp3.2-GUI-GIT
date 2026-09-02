@@ -4,6 +4,9 @@
  */
 package Conversor;
 
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Mauro Perez
@@ -51,25 +54,32 @@ public class Conversor extends javax.swing.JFrame {
         lblTitulo.setText("Conversor de temperatura");
         lblTitulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Ingrese la temperatura en grados");
 
         txtTemp.setBackground(new java.awt.Color(255, 255, 255));
 
         buttonGroup1.add(rbtnFarenheit);
-        rbtnFarenheit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        rbtnFarenheit.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         rbtnFarenheit.setForeground(new java.awt.Color(0, 0, 0));
         rbtnFarenheit.setText("Farenheit");
 
         buttonGroup1.add(rbtnKelvin);
-        rbtnKelvin.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        rbtnKelvin.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         rbtnKelvin.setForeground(new java.awt.Color(0, 0, 0));
         rbtnKelvin.setText("Kelvin");
 
+        btnConvertir.setBackground(new java.awt.Color(153, 153, 153));
         btnConvertir.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnConvertir.setForeground(new java.awt.Color(0, 0, 0));
         btnConvertir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Conversor/icons8-aprobar-y-actualizar-48.png"))); // NOI18N
         btnConvertir.setText("Convertir");
+        btnConvertir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConvertirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
@@ -127,7 +137,7 @@ public class Conversor extends javax.swing.JFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,6 +163,23 @@ public class Conversor extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertirActionPerformed
+        // TODO add your handling code here:
+        if (txtTemp.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar una temperatura", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        if (!rbtnFarenheit.isSelected() && !rbtnKelvin.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un tipo", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        if (rbtnFarenheit.isSelected()) {
+            System.out.println("grados en f");
+        } else if (rbtnKelvin.isSelected()) {
+            System.out.println("grados en k");
+        }
+    }//GEN-LAST:event_btnConvertirActionPerformed
 
     /**
      * @param args the command line arguments
